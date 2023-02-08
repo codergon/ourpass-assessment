@@ -1,7 +1,11 @@
+@import "./common/reset";
+@import "./common/mixin";
+@import "./common/functions";
+
 body {
   background: #fafafa;
   font-weight: 500;
-  font-size: 16px;
+  font-size: 15px;
 }
 ul {
   padding: 0;
@@ -17,7 +21,41 @@ a {
   text-decoration: none;
 }
 
-.horPad {
+.flex {
+  display: flex;
+}
+.row {
+  flex-direction: row;
+}
+.column {
+  flex-direction: column;
+}
+.spaced {
+  justify-content: space-between;
+}
+.align-center {
+  align-items: center;
+}
+.justify-center {
+  justify-content: center;
+}
+
+.container-padding {
   padding-left: 5vw;
   padding-right: 5vw;
+}
+
+.bold-text {
+  font-weight: 600;
+}
+
+.primary-color {
+  color: $primary;
+}
+.primary-text {
+  color: #000;
+  font-weight: 600;
+}
+.secondary-text {
+  color: $secondary;
 }

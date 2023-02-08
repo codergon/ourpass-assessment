@@ -1,39 +1,41 @@
 <template>
-  <nav class="horPad bg-white">
-    <app-logo />
+  <nav class="bg-white">
+    <div class="nav-content container-padding">
+      <app-logo />
 
-    <ul>
-      <li>
-        <router-link to="/dashboard" active-class="activeLink">
-          <squares-icon />
-          <p>Dashboard</p>
-        </router-link>
-      </li>
-      <li>
-        <router-link to="/" active-class="activeLink">
-          <invoice-icon />
-          <p>Invoices</p>
-        </router-link>
-      </li>
-      <li>
-        <router-link to="/wallet" active-class="activeLink">
-          <wallet-icon />
-          <p>Wallet</p>
-        </router-link>
-      </li>
-      <li>
-        <router-link to="/activity" active-class="activeLink">
-          <activity-icon />
-          <p>Activity</p>
-        </router-link>
-      </li>
-      <li>
-        <router-link to="/help" active-class="activeLink">
-          <phone-icon />
-          <p>Help</p>
-        </router-link>
-      </li>
-    </ul>
+      <ul>
+        <li>
+          <router-link to="/dashboard" active-class="activeLink">
+            <squares-icon />
+            <p>Dashboard</p>
+          </router-link>
+        </li>
+        <li>
+          <router-link to="/" active-class="activeLink">
+            <invoice-icon />
+            <p>Invoices</p>
+          </router-link>
+        </li>
+        <li>
+          <router-link to="/wallet" active-class="activeLink">
+            <wallet-icon />
+            <p>Wallet</p>
+          </router-link>
+        </li>
+        <li>
+          <router-link to="/activity" active-class="activeLink">
+            <activity-icon />
+            <p>Activity</p>
+          </router-link>
+        </li>
+        <li>
+          <router-link to="/help" active-class="activeLink">
+            <phone-icon />
+            <p>Help</p>
+          </router-link>
+        </li>
+      </ul>
+    </div>
   </nav>
 </template>
 
@@ -67,12 +69,22 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 nav {
-  padding-top: 2px;
-  gap: calc(max(5vw, 5vh, 5vmin));
+  width: 100%;
   display: flex;
-  align-items: center;
+  padding-top: 2px;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
+
+  .nav-content {
+    width: 100%;
+    display: flex;
+    padding-top: 2px;
+    align-items: center;
+    flex-direction: row;
+    max-width: $max-width;
+    justify-content: space-between;
+    gap: calc(max(5vw, 5vh, 5vmin));
+  }
 }
 
 ul {

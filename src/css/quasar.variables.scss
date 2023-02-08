@@ -3,15 +3,10 @@
 // Default font
 $typography-font-family: "Poppins", sans-serif !default;
 
+$max-width: 1280px;
+
+$accent: #fcfcfc;
 $primary: #383584;
+$secondary: #acb3b9;
 
-$secondary: #26a69a;
-$accent: #9c27b0;
-
-$dark: #1d1d1d;
-$dark-page: #121212;
-
-$positive: #21ba45;
-$negative: #c10015;
-$info: #31ccec;
-$warning: #f2c037;
+$border: 1px solid #e6e6e6;

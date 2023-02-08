@@ -1,8 +1,8 @@
 <template>
-  <q-layout view="lHh Lpr lFf">
+  <q-layout view="lHh Lpr lFf" class="flex column">
     <app-navbar />
 
-    <q-page-container class="horPad">
+    <q-page-container class="container-padding layout-container">
       <router-view />
     </q-page-container>
   </q-layout>
@@ -14,15 +14,13 @@ import { defineComponent, ref } from "vue";
 
 export default defineComponent({
   name: "DefaultLayout",
-
   components: { AppNavbar },
-
-  setup() {
-    const leftDrawerOpen = ref(false);
-
-    return {
-      leftDrawerOpen,
-    };
-  },
 });
 </script>
+
+<style lang="scss" scoped>
+.layout-container {
+  margin: 0px auto;
+  max-width: $max-width;
+}
+</style>
