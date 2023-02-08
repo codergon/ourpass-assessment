@@ -9,7 +9,7 @@ const routes = [
       },
       {
         alias: "",
-        path: "/invoices",
+        path: "invoices",
         component: () => import("pages/invoices"),
       },
       {

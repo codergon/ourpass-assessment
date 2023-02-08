@@ -1,5 +1,5 @@
 <template>
-  <div>Paypay</div>
+  <div>Paypay.</div>
 </template>
 
 <script>
@@ -9,7 +9,7 @@ export default {};
 <style lang="scss" scoped>
 div {
   font-size: calc(min(3vw, 3vh, 3vmin));
-  font-weight: 600;
+  font-weight: 700;
   color: $primary;
 }
 </style>

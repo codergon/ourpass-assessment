@@ -2,7 +2,7 @@
   <q-layout view="lHh Lpr lFf">
     <app-navbar />
 
-    <q-page-container>
+    <q-page-container class="horPad">
       <router-view />
     </q-page-container>
   </q-layout>
