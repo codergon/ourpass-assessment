@@ -2,28 +2,35 @@
   <invoice-header :invoice-id="invoiceId" />
 
   <div class="invoice-content">
-    <div class="flex row spaced company-details-container">
+    <div class="flex row spaced company-details-container" v-if="data?.seller">
       <div class="row flex align-center company-details">
         <div class="company-logo">
           <img v-bind:src="require('assets/images/dipa.png')" alt="logo" />
         </div>
         <div class="company-info">
-          <p class="primary-text">Dipa Inhouse</p>
-          <p class="secondary-text">hello@dipainhouse.com</p>
+          <p class="primary-text">{{ data?.seller?.name }}</p>
+          <p class="secondary-text">{{ data?.seller?.email }}</p>
         </div>
       </div>
 
       <div class="column flex company-address">
-        <p class="secondary-text">Ijen Boulevard Street 101</p>
-        <p class="secondary-text">Malang City, 65115</p>
-        <p class="secondary-text">East Java, Indonesia</p>
+        <p class="secondary-text">{{ data?.seller?.address?.street }}</p>
+        <p class="secondary-text">{{ data?.seller?.address?.city }}</p>
+        <p class="secondary-text">{{ data?.seller?.address?.country }}</p>
       </div>
     </div>
 
-    <invoice-details :invoice-id="invoiceId" />
-    <invoice-item-details />
+    <invoice-details
+      v-if="data?.billedTo"
+      :invoice-id="invoiceId"
+      :dueDate="data?.dueDate"
+      :issuedDate="data?.issuedDate"
+      :billedTo="data?.billedTo"
+    />
 
-    <invoice-payment-method />
+    <invoice-item-details :items="data?.items" v-if="data?.items?.length > 0" />
+
+    <invoice-payment-method v-if="data?.cardId" :cardId="data?.cardId" />
   </div>
 </template>
 
@@ -44,7 +51,18 @@ export default {
   data() {
     return {
       invoiceId: "inv-2022-010",
+      data: null,
     };
+  },
+
+  created() {
+    fetch(`/api/invoice/${this.invoiceId}`)
+      .then((res) => res.json())
+      .then((json) => {
+        this.$store.commit("invoice/setActiveInvoice", json.invoice);
+
+        this.data = json.invoice;
+      });
   },
 };
 </script>

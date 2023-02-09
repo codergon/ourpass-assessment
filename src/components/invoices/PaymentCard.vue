@@ -1,21 +1,21 @@
 <template>
   <div class="card">
     <div class="card-type">
-      <p class="primary-text">Wire transfer</p>
+      <p class="primary-text">{{ card?.type }}</p>
       <wise-logo />
     </div>
 
     <div class="info">
       <p class="secondary-text">Account name:&nbsp;</p>
-      <p class="primary-text">Barly Vallendito</p>
+      <p class="primary-text">{{ card?.acctName }}</p>
     </div>
     <div class="info">
       <p class="secondary-text">Account number:&nbsp;</p>
-      <p class="primary-text">9700 0023 4300 2900</p>
+      <p class="primary-text">{{ card?.acctNumber }}</p>
     </div>
     <div class="info">
       <p class="secondary-text">Routing number:&nbsp;</p>
-      <p class="primary-text">084009519</p>
+      <p class="primary-text">{{ card?.routingNo }}</p>
     </div>
   </div>
 </template>
@@ -25,6 +25,16 @@ import WiseLogo from "../common/icons/WiseLogo.vue";
 export default {
   components: { WiseLogo },
   name: "InvoicePaymentMethod",
+
+  props: {
+    card: {
+      card: {
+        type: Object,
+        required: true,
+      },
+      required: true,
+    },
+  },
 };
 </script>
 

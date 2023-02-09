@@ -5,13 +5,13 @@
         <p class="primary-text">Payment Method</p>
         <p class="primary-color">Select Payment</p>
       </div>
-      <payment-card />
+      <payment-card :card="card" v-if="card?.id" />
     </div>
 
     <div class="sub-total">
       <div class="sub-total-header">
         <p class="primary-text">Sub Total</p>
-        <p class="primary-text">$4,800.00</p>
+        <p class="primary-text">${{ total }}</p>
       </div>
 
       <div class="sub-total-entries">
@@ -26,7 +26,7 @@
 
         <div class="entry-item total">
           <p class="secondary-text">Total Amount</p>
-          <p class="primary-text">$4,800.00</p>
+          <p class="primary-text">${{ total }}</p>
         </div>
       </div>
     </div>
@@ -34,10 +34,35 @@
 </template>
 
 <script>
+import { toDecimals } from "src/utils/numberUtils";
 import PaymentCard from "./PaymentCard.vue";
 export default {
   components: { PaymentCard },
   name: "InvoicePaymentMethod",
+
+  props: {
+    cardId: {
+      required: true,
+    },
+  },
+
+  data() {
+    return {
+      card: null,
+    };
+  },
+
+  computed: {
+    total() {
+      return toDecimals(this.$store.state.invoice.activeInvoiceTotal);
+    },
+  },
+
+  mounted() {
+    fetch(`/api/cards/${this.cardId}`)
+      .then((res) => res.json())
+      .then((json) => (this.card = json?.card));
+  },
 };
 </script>
 
@@ -58,9 +83,9 @@ export default {
   }
 
   .payment-details {
+    width: 350px;
     display: flex;
     max-width: 100%;
-    width: max-content;
     flex-direction: column;
     &-header {
       display: flex;

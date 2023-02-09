@@ -5,7 +5,7 @@ const { configure } = require("quasar/wrappers");
 module.exports = configure(function (ctx) {
   return {
     supportTS: false,
-    boot: [],
+    boot: ["req"],
 
     // https://v2.quasar.dev/quasar-cli-webpack/quasar-config-js#Property%3A-css
     css: ["app.scss"],

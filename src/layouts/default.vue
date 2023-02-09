@@ -31,5 +31,8 @@ export default defineComponent({
   width: 100%;
   margin: 0px auto;
   max-width: $max-width;
+  @media (max-width: 1000px) {
+    padding-bottom: 50px;
+  }
 }
 </style>

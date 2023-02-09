@@ -4,17 +4,17 @@
       <p class="primary-text">Invoice Number</p>
       <p class="primary-text">{{ invoiceId.toUpperCase() }}</p>
       <p class="secondary-text">
-        Issued Date: <span>{{ "11 Jan 2022" }}</span>
+        Issued Date: <span>{{ issuedDate }}</span>
       </p>
       <p class="secondary-text">
-        Due Date: <span>{{ "18 Jan 2022" }}</span>
+        Due Date: <span>{{ dueDate }}</span>
       </p>
     </div>
     <div class="column flex details-block billing-address">
       <p class="primary-text">Billed to</p>
-      <p class="secondary-text">Zack Grizzly</p>
-      <p class="secondary-text">Monlight Agency LTD</p>
-      <p class="secondary-text">New York, USA</p>
+      <p class="secondary-text">{{ billedTo?.name }}</p>
+      <p class="secondary-text">{{ billedTo?.company }}</p>
+      <p class="secondary-text">{{ billedTo?.address }}</p>
     </div>
   </div>
 </template>
@@ -25,6 +25,18 @@ export default {
   props: {
     invoiceId: {
       type: String,
+      required: true,
+    },
+    dueDate: {
+      type: String,
+      required: true,
+    },
+    issuedDate: {
+      type: String,
+      required: true,
+    },
+    billedTo: {
+      type: Object,
       required: true,
     },
   },
