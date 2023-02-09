@@ -1,9 +1,8 @@
 <template>
   <svg
-    width="18"
-    height="18"
-    viewBox="0 0 18 18"
     fill="none"
+    :style="style"
+    viewBox="0 0 18 18"
     xmlns="http://www.w3.org/2000/svg"
   >
     <path
@@ -15,11 +14,16 @@
 <script>
 export default {
   name: "PhoneIcon",
+  props: {
+    size: {
+      type: Number,
+      default: 15,
+    },
+  },
+  computed: {
+    style() {
+      return "width: " + this.size + "px";
+    },
+  },
 };
 </script>
-
-<style lang="scss" scoped>
-svg {
-  width: 15px;
-}
-</style>

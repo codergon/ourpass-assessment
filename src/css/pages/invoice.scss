@@ -1,0 +1,7 @@
+.company-details-container {
+  @include ipad {
+    align-items: center;
+    flex-direction: column;
+    justify-content: start;
+  }
+}

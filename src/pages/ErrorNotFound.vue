@@ -1,31 +1,32 @@
 <template>
-  <div class="fullscreen bg-blue text-white text-center q-pa-md flex flex-center">
+  <div class="fullscreen text-black text-center q-pa-md flex flex-center">
     <div>
-      <div style="font-size: 30vh">
-        404
-      </div>
+      <div style="font-size: 28vmin; color: #383584">404</div>
 
-      <div class="text-h2" style="opacity:.4">
+      <div style="font-size: 8vmin; opacity: 0.4; margin-bottom: 40px">
         Oops. Nothing here...
       </div>
 
-      <q-btn
-        class="q-mt-xl"
-        color="white"
-        text-color="blue"
-        unelevated
+      <router-link
         to="/"
-        label="Go Home"
-        no-caps
-      />
+        style="
+          color: #fff;
+          font-size: 14px;
+          padding: 7px 16px;
+          border-radius: 2px;
+          background: #383584;
+        "
+      >
+        Go Home
+      </router-link>
     </div>
   </div>
 </template>
 
 <script>
-import { defineComponent } from 'vue'
+import { defineComponent } from "vue";
 
 export default defineComponent({
-  name: 'ErrorNotFound'
-})
+  name: "ErrorNotFound",
+});
 </script>

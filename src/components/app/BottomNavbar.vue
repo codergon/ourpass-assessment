@@ -1,9 +1,7 @@
 <template>
   <nav class="bg-white">
     <div class="nav-content container-padding">
-      <app-logo />
-
-      <ul v-if="width > 1000">
+      <ul>
         <li>
           <router-link to="/dashboard" active-class="activeLink">
             <squares-icon />
@@ -40,7 +38,6 @@
 </template>
 
 <script>
-import AppLogo from "./AppLogo.vue";
 import { defineComponent } from "vue";
 import { useWindowSize } from "src/composables/resize";
 import PhoneIcon from "../common/icons/PhoneIcon.vue";
@@ -50,10 +47,9 @@ import InvoiceIcon from "../common/icons/InvoiceIcon.vue";
 import ActivityIcon from "../common/icons/ActivityIcon.vue";
 
 export default defineComponent({
-  name: "AppNavbar",
+  name: "BottomNavbar",
 
   components: {
-    AppLogo,
     SquaresIcon,
     WalletIcon,
     PhoneIcon,
@@ -72,29 +68,36 @@ export default defineComponent({
 nav {
   width: 100%;
   display: flex;
-  padding-top: 2px;
   flex-direction: row;
   justify-content: center;
+
+  bottom: 0;
+  left: 0px;
+  position: fixed;
+  border-top: $border;
+  padding-bottom: 10px;
 
   .nav-content {
     width: 100%;
     display: flex;
-    min-height: 66px;
     padding-top: 2px;
     align-items: center;
     flex-direction: row;
     max-width: $max-width;
-    justify-content: space-between;
-    gap: calc(max(5vw, 5vh, 5vmin));
+    justify-content: center;
   }
 }
 
 ul {
   flex: 1;
-  gap: 30px;
+  gap: 10px;
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: space-around;
+
+  max-width: 800px;
+
   li {
     display: flex;
     font-weight: 500;
@@ -104,7 +107,7 @@ ul {
       font-size: 15px;
       flex-direction: row;
       align-items: center;
-      padding: 20px 10px;
+      padding: 16px 10px;
 
       svg {
         fill: #9ea6b9 !important;
@@ -115,6 +118,17 @@ ul {
         border-bottom: 2px solid $primary;
         svg {
           fill: $primary !important;
+        }
+      }
+
+      @include tablet {
+        p {
+          font-size: 14px;
+        }
+      }
+      @include SMtablet {
+        p {
+          display: none;
         }
       }
     }

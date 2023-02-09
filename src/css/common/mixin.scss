@@ -1,15 +1,10 @@
-@mixin xlscreen {
-  @media (max-width: 1396px) {
-    @content;
-  }
-}
-@mixin lgscreen {
+@mixin LGdesktop {
   @media (max-width: 1150px) {
     @content;
   }
 }
 @mixin desktop {
-  @media (max-width: 1024px) {
+  @media (max-width: 1078px) {
     @content;
   }
 }
@@ -23,13 +18,13 @@
     @content;
   }
 }
-@mixin phone {
-  @media (max-width: 570px) {
+@mixin SMtablet {
+  @media (max-width: 768px) {
     @content;
   }
 }
-@mixin slScreen {
-  @media (max-width: 400px) {
+@mixin phone {
+  @media (max-width: 570px) {
     @content;
   }
 }

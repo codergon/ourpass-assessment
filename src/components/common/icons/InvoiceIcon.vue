@@ -1,9 +1,8 @@
 <template>
   <svg
-    width="18"
-    height="24"
-    viewBox="0 0 18 24"
+    :style="style"
     fill="none"
+    viewBox="0 0 18 24"
     xmlns="http://www.w3.org/2000/svg"
   >
     <path
@@ -15,11 +14,16 @@
 <script>
 export default {
   name: "Invoice-Icon",
+  props: {
+    size: {
+      type: Number,
+      default: 17.5,
+    },
+  },
+  computed: {
+    style() {
+      return "height: " + this.size + "px";
+    },
+  },
 };
 </script>
-
-<style lang="scss" scoped>
-svg {
-  height: 17.5px;
-}
-</style>

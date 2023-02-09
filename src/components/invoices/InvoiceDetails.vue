@@ -32,11 +32,25 @@ export default {
 </script>
 
 <style lang="scss">
+// $
+
 .invoice-details {
-  padding: 30px 30px;
-  border-radius: 20px;
+  gap: 20px;
+  padding: 30px;
   margin-top: 2rem;
+  border-radius: 20px;
   background: #504da4;
+
+  @include phone {
+    padding: 20px;
+    flex-direction: column;
+    justify-content: start;
+
+    .billing-address {
+      align-items: flex-start !important;
+    }
+  }
+
   .details-block {
     gap: 2px;
   }

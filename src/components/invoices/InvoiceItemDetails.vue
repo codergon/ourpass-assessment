@@ -13,7 +13,7 @@
     </div>
 
     <div class="item-info">
-      <div class="item-info-column name-column column flex">
+      <div class="item-info__column first-column">
         <div class="column-item header-item">Item name</div>
         <div class="column-item">
           <div class="input-block">
@@ -22,13 +22,13 @@
         </div>
 
         <div class="column-item">
-          <div class="input-block">
+          <div class="input-block desc">
             <input type="text" placeholder="Description" />
           </div>
         </div>
       </div>
 
-      <div class="item-info-column common-column column flex">
+      <div class="item-info__column common-column">
         <div class="column-item header-item">Hours</div>
         <div class="column-item">
           <div class="input-block">
@@ -37,7 +37,7 @@
         </div>
       </div>
 
-      <div class="item-info-column common-column column flex">
+      <div class="item-info__column common-column">
         <div class="column-item header-item">Rate/hr</div>
         <div class="column-item">
           <div class="input-block">
@@ -46,7 +46,7 @@
         </div>
       </div>
 
-      <div class="item-info-column common-column column flex">
+      <div class="item-info__column common-column">
         <div class="column-item header-item">Tax</div>
         <div class="column-item">
           <div class="input-block">
@@ -56,14 +56,14 @@
         </div>
       </div>
 
-      <div class="item-info-column total-column column flex">
+      <div class="item-info__column total-line-column">
         <div class="column-item header-item">Line Total</div>
         <div class="column-item">
           <div class="input-block">
             <p class="secondary-text">$</p>
             <input type="number" placeholder="4,800.00" />
           </div>
-          <button>+</button>
+          <div><button>+</button></div>
         </div>
       </div>
     </div>
@@ -117,18 +117,17 @@ p {
     flex-direction: row;
     border-bottom: $border;
 
-    &-column {
+    flex-wrap: wrap;
+
+    &__column {
+      display: flex;
       font-size: 14px;
-      .column-item {
+      flex-direction: column;
+      .column-item:not(last-child) {
         width: 100%;
         display: flex;
         overflow: hidden;
         padding-right: 20px;
-      }
-      &:last-child {
-        .column-item {
-          padding-right: 0px;
-        }
       }
 
       .header-item {
@@ -165,11 +164,11 @@ p {
         }
       }
 
-      &.name-column {
+      &.first-column {
         flex: 1;
-        max-width: 500px;
         white-space: nowrap;
-        min-width: 400px;
+        min-width: max-content;
+        max-width: calc(min(500px, 100%));
         .input-block {
           margin-bottom: 16px;
         }
@@ -178,20 +177,22 @@ p {
         min-width: 120px;
         max-width: 120px;
       }
-      &.total-column {
+      &.total-line-column {
         flex: 1;
         min-width: max-content;
         .column-item:not(.header-item) {
           gap: 20px;
           align-items: center;
           button {
-            width: 22px;
-            height: 22px;
+            flex: 0;
+            width: 24px;
+            height: 24px;
             color: #fff;
             display: flex;
             font-size: 20px;
             border-radius: 100%;
             align-items: center;
+            padding: 0px !important;
             justify-content: center;
             background-color: $primary;
           }
@@ -199,6 +200,52 @@ p {
 
         .input-block {
           width: 140px;
+        }
+      }
+    }
+
+    @include desktop {
+      gap: 16px;
+      padding-top: 16px;
+      padding-bottom: 16px;
+
+      &__column {
+        flex: 1;
+        margin-top: 0px;
+        min-width: none !important;
+        max-width: none !important;
+
+        .column-item {
+          align-items: center;
+          padding-right: 0px !important;
+          &.header-item {
+            height: auto;
+            // color: #555;
+            margin-bottom: 8px;
+            border-bottom: none;
+          }
+
+          .input-block {
+            height: 44px;
+            border-radius: 10px;
+            padding: 0px 14px;
+          }
+        }
+
+        &.first-column {
+          max-width: 100%;
+          .input-block {
+            margin-bottom: 16px;
+            &.desc {
+              margin-bottom: 0px;
+            }
+          }
+        }
+
+        &.total-line-column {
+          button {
+            font-size: 16px !important;
+          }
         }
       }
     }

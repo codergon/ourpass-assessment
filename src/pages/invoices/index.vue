@@ -2,7 +2,7 @@
   <invoice-header :invoice-id="invoiceId" />
 
   <div class="invoice-content">
-    <div class="flex row spaced">
+    <div class="flex row spaced company-details-container">
       <div class="row flex align-center company-details">
         <div class="company-logo">
           <img v-bind:src="require('assets/images/dipa.png')" alt="logo" />
@@ -50,6 +50,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+// $
+
 .invoice-content {
   display: flex;
   border-radius: 14px;
@@ -57,8 +59,24 @@ export default {
   flex-direction: column;
   padding: 20px 26px 40px;
   background-color: #fff;
+  @include phone {
+    padding: 20px 20px 40px;
+  }
   p {
     line-height: 1.6;
+  }
+
+  .company-details-container {
+    gap: 20px;
+    @include ipad {
+      flex-direction: column;
+      justify-content: start;
+
+      .company-address {
+        // flex-direction: row;
+        align-items: flex-start;
+      }
+    }
   }
 
   .company {

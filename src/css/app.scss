@@ -1,11 +1,13 @@
 @import "./common/reset";
-@import "./common/mixin";
-@import "./common/functions";
 
 body {
   background: #fafafa;
   font-weight: 500;
   font-size: 15px;
+
+  @include phone {
+    // font-size: 14px;
+  }
 }
 ul {
   padding: 0;
@@ -45,6 +47,7 @@ a {
   padding-right: 5vw;
 }
 
+// TEXT UTILITIES
 .bold-text {
   font-weight: 600;
 }

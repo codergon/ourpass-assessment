@@ -1,5 +1,5 @@
 <template>
-  <div class="conatiner">
+  <div class="container">
     <div class="payment-details">
       <div class="payment-details-header">
         <p class="primary-text">Payment Method</p>
@@ -42,14 +42,25 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.conatiner {
+// $
+
+.container {
+  gap: 30px;
   display: flex;
   padding-top: 20px;
   flex-direction: row;
   justify-content: space-between;
 
+  @include ipad {
+    align-items: center;
+    flex-direction: column;
+    justify-content: start;
+  }
+
   .payment-details {
     display: flex;
+    max-width: 100%;
+    width: max-content;
     flex-direction: column;
     &-header {
       display: flex;

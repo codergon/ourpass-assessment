@@ -29,12 +29,13 @@ export default {
 </script>
 
 <style lang="scss">
+$card-bg: #f8f8f8;
 .card {
   width: 350px;
   display: flex;
   padding: 16px 20px;
   max-width: 100%;
-  background: $accent;
+  background: $card-bg;
   border-radius: 12px;
   flex-direction: column;
   p {

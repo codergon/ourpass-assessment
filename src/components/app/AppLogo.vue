@@ -8,7 +8,7 @@ export default {};
 
 <style lang="scss" scoped>
 div {
-  font-size: calc(min(3vw, 3vh, 3vmin));
+  font-size: calc(min(4.7vw, 26px));
   font-weight: 700;
   color: $primary;
 }

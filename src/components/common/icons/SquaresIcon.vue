@@ -1,5 +1,10 @@
 <template>
-  <svg fill="none" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg">
+  <svg
+    fill="none"
+    :style="style"
+    viewBox="0 0 18 18"
+    xmlns="http://www.w3.org/2000/svg"
+  >
     <path
       fill-rule="evenodd"
       clip-rule="evenodd"
@@ -12,12 +17,16 @@
 <script>
 export default {
   name: "SquaresIcon",
+  props: {
+    size: {
+      type: Number,
+      default: 16,
+    },
+  },
+  computed: {
+    style() {
+      return "width: " + this.size + "px; height: " + this.size + "px";
+    },
+  },
 };
 </script>
-
-<style lang="scss" scoped>
-svg {
-  width: 16px;
-  height: 16px;
-}
-</style>
